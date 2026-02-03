@@ -1,0 +1,23 @@
+version = 1
+revision = 3
+requires-python = ">=3.11"
+
+[[package]]
+name = "goto-statement"
+version = "1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/82/be/f2c30d577110f05a3a9e97e84b586a1564f9abbb8f8317c92e0cad82e099/goto-statement-1.2.tar.gz", hash = "sha256:e42e8c96dc24d5e8e2b1987c7c12335f73d0629852d121eac9e49bfa54514dce", size = 6501, upload-time = "2018-12-29T19:18:26.822Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1c/da/a9d93c0740c7af9f68f94036bb694c34414e8128fdc2af4bd56d07e6d7fd/goto_statement-1.2-py2.py3-none-any.whl", hash = "sha256:b087b365893da94745d5883b36eb42aa03fd204c479c333152a95ac24cc1321c", size = 5625, upload-time = "2018-12-29T19:18:25.6Z" },
+]
+
+[[package]]
+name = "python-template"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "goto-statement" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "goto-statement", specifier = ">=1.2" }]
