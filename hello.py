@@ -1,15 +1,10 @@
-print('Hello world - hello')
 import os
-# while True:
-#     try:
-#         celsius = float(input('Please enter the temperature in Celsius: '))
-#         break
-#     except:
-#         print('You did not enter a valid number, try again')
-# fahrenheit = (celsius * (9/5)) + 32
-# print('The temperature in Fahrenheit is: ', fahrenheit)
+from functions import get_random_fruit_from_api, get_single_char
 
-fruit = input('Enter a fruit: ')
+# fruit = input('Enter a fruit: ')
+fruit = get_random_fruit_from_api()
+print(fruit)
+input('Press enter to continue')
 os.system('clear')
 underscores = '_' * len(fruit)
 print(underscores)
@@ -21,7 +16,7 @@ print()
 guess_counter = 0
 while guess_counter < total_guess and underscores != fruit:
   print()
-  guess_type = input('Would you like to guess the fruit or a letter [f/l]')
+  guess_type = 'l'#input('Would you like to guess the fruit or a letter [f/l]')
   print()
   if guess_type == 'f':
       guess = input('Enter the name of the fruit: ')
@@ -36,7 +31,8 @@ while guess_counter < total_guess and underscores != fruit:
       break
   elif guess_type == 'l':
       print()
-      guess = input('Enter a letter: ')
+      print('Enter a letter: ')
+      guess = get_single_char()
       if guess in fruit:
         replacement_counter = 0
         while replacement_counter < len(fruit):
