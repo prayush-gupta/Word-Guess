@@ -5,6 +5,8 @@ import sys
 import tty
 import termios
 import pandas as pd
+from google import genai
+
 
 def get_random_fruit_from_api():
   # Fetch all fruits from the Fruityvice API
@@ -46,33 +48,50 @@ def cels_to_fahr():
 def play_the_game(keyword, total_guess):
   underscores = '_' * len(keyword)
   guess_counter = 0
+  hint_requested = 'no'
+  result = ''
 
   print(underscores)
   print()
   print('You are allowed ',total_guess,' incorrect guesses')
+  print()
+  print('Press ~ for a hint')
   print()
 
   while guess_counter < total_guess and underscores != keyword:
     print()
     print('Enter a letter: ')
     guess = get_single_char()
-    if guess in keyword:
+    if guess == '~':
+      os.system('clear')
+      try:
+        hint = ask_for_hint(keyword)
+      except:
+        hint = 'Sorry, no hint available, try again later'
+      hint_requested = 'yes'
+      
+    elif guess in keyword:
       replacement_counter = 0
       while replacement_counter < len(keyword):
         if keyword[replacement_counter] == guess:
           underscores = underscores[:replacement_counter] + guess + underscores[replacement_counter+1:]
         replacement_counter += 1
       result = 'You guessed a letter correctly'
+      
     else:
       result = 'Wrong guess!'
       guess_counter += 1
+    
     os.system('clear')
     print(underscores)
     print()
     print(result)
     print()
     print('You have ', total_guess - guess_counter,' remaining guesses')
-
+    if hint_requested == 'yes':
+      print()
+      print('HINT: ', hint)
+  
 
   if underscores == keyword:
     result = 1
@@ -142,3 +161,18 @@ def game_controller():
     final_result['Total Score'] = final_result['Points'].cumsum()
     print(final_result)
     return final_result
+
+
+def ask_for_hint(keyword):
+
+  print()
+  print('Asking for a hint, please wait...')
+
+  client = genai.Client()
+
+  response = client.models.generate_content(
+      model="gemini-3-flash-preview",
+      contents="Generate a small hint to help identify the keyword: "+keyword,
+  )
+
+  return(response.text)
