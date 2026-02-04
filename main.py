@@ -1,27 +1,27 @@
-import functions
+# import functions
+
+# game_result = functions.game_controller()
+
+
+# from openai import OpenAI
+# client = OpenAI(api_key='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')
+
+# response = client.responses.create(
+#     model="gpt-5.0",
+#     input="What is ChatGPT?"
+# )
+
+# print(response.output_text)
+
+
 import os
-import pandas as pd
+from google import genai
 
-play = 'yes'
-i = 0
-won = 0
-overall_result = []
-overall_result.append(['Fruit','Result'])
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
-while play == 'yes':
-  i += 1
-  os.system('clear')
-  fruit = functions.get_random_fruit_from_api().lower()
-  local_won = functions.play_the_game(fruit)
-  won += local_won 
-  overall_result.append([fruit, local_won])
-  print()
-  print('You have won', won, 'out of', i,'games')
-  print()
-  play = input('Would you like to play again? (yes/no) ').lower()
+response = client.models.generate_content(
+    model="gemini-3-flash-preview",
+    contents="Explain how AI works in a few words",
+)
 
-print()
-print()
-print(pd.DataFrame(overall_result, columns=['Fruit', 'Result']))
-
-# print(functions.get_random_fruit_from_api())
+print(response.text)
