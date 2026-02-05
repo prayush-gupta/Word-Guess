@@ -4,7 +4,6 @@ import tty
 import termios
 
 
-
 def get_single_char():
   """Reads a single character from tty without Enter."""
   fd = sys.stdin.fileno()

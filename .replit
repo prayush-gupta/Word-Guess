@@ -17,6 +17,7 @@ deploymentTarget = "cloudrun"
 
 [agent]
 expertMode = true
+integrations = ["python_database:1.0.0"]
 
 [workflows]
 runButton = "Project"
@@ -36,7 +37,7 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python src/main.py"
+args = "python src/__main__.py"
 
 [workflows.workflow.metadata]
 outputType = "console"

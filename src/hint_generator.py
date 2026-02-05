@@ -3,7 +3,6 @@ from google import genai
 
 def ask_for_hint(keyword):
 
-  print()
   print('Asking for a hint, please wait...')
 
   client = genai.Client()
