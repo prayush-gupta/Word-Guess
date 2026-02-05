@@ -1,8 +1,8 @@
 import os
 import pandas as pd
-from .words_generator import word_generator
-from .hint_generator import ask_for_hint
-from .support_functions import get_single_char
+from words_generator import word_generator
+from hint_generator import ask_for_hint
+from support_functions import get_single_char
 
 def game_controller():
   try:

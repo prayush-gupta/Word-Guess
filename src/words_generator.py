@@ -1,5 +1,6 @@
 import requests
 import random
+import os
 
 
 def get_random_fruit_from_api():
