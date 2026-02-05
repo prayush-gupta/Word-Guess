@@ -41,3 +41,12 @@ args = "python src/__main__.py"
 
 [workflows.workflow.metadata]
 outputType = "console"
+
+[[workflows.workflow]]
+name = "side show"
+mode = "sequential"
+author = 35471844
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python playground.py"
