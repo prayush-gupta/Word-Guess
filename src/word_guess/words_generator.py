@@ -1,8 +1,6 @@
 """Word selection from DB, APIs, or random-word service."""
 
 import random
-import re
-
 import requests
 
 from word_guess.database import SessionLocal
