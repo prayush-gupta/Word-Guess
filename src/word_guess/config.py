@@ -9,3 +9,5 @@ def get_database_url():
     if url and url.startswith("postgres://"):
         url = url.replace("postgres://", "postgresql://", 1)
     return url
+
+print("DATABASE_URL:", get_database_url())

@@ -10,11 +10,17 @@ DATABASE_URL = get_database_url()
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL environment variable is not set")
 
-engine = create_engine(DATABASE_URL)
+# engine = create_engine(DATABASE_URL)
+
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-def init_db() -> None:
+def init_db():
     """Create all tables in the database."""
     Base.metadata.create_all(bind=engine)
 
