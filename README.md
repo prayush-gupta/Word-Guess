@@ -29,7 +29,7 @@ Word-Guess/
 ## Setup
 
 - **Python**: 3.11+
-- Copy `.env.example` to `.env` and set `DATABASE_URL` (e.g. PostgreSQL).
+- Copy `.env.example` to `.env` and set `DATABASE_URL` (e.g. PostgreSQL or SQLLite).
 - Install in editable mode: `pip install -e .` or `uv sync`, then run from the project root.
 
 ## Run the game
