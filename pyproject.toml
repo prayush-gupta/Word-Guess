@@ -1,8 +1,12 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "python-template"
+name = "word_guess"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "The word-guess game where players guess a random word, character-by-character, based on the hints provided"
+authors = [{ name = "Prayush Gupta", email = "prayushg12@gmail.com" }]
 requires-python = ">=3.11"
 dependencies = [
     "google-genai>=1.61.0",
@@ -10,4 +14,11 @@ dependencies = [
     "pandas>=2.3.3",
     "requests>=2.32.5",
     "sift-stack-py>=0.10.0",
+    "sqlalchemy>=2.0",
 ]
+
+[project.scripts]
+word-guess = "word_guess.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
