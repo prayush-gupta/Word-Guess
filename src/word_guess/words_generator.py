@@ -56,10 +56,18 @@ def word_generator(word_type: str) -> str:
             print("Retrying to generate a word, please wait...")
         try:
             if word_type == "d":
-                keyword = random_from_DB().lower()
+                raw = random_from_DB()
+                if raw == "Generation Error":
+                    generation_try += 1
+                    continue
+                keyword = raw.lower()
                 break
             if word_type == "f":
-                keyword = get_random_fruit_from_api().lower()
+                raw = get_random_fruit_from_api()
+                if raw == "Failed to fetch fruits from API":
+                    generation_try += 1
+                    continue
+                keyword = raw.lower()
                 break
             result = get_random_words(1, diff=2, length=random.randrange(6, 15))
             if isinstance(result, str) and result.startswith("Error:"):

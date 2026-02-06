@@ -42,7 +42,7 @@ def game_controller(max_guesses: int, user_name: str) -> None:
         print("Generating a word, please wait...")
         keyword = word_generator(word_type)
 
-        if keyword == "Generation Error":
+        if keyword in ("Generation Error", "Failed to fetch fruits from API"):
             os.system("clear")
             print("Sorry, there was an error generating a word. Please try again later.")
             if len(overall_result) > 0:
