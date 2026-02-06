@@ -43,10 +43,10 @@ args = "python src/__main__.py"
 outputType = "console"
 
 [[workflows.workflow]]
-name = "side show"
+name = "Data Upload"
 mode = "sequential"
 author = 35471844
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python playground.py"
+args = "python src/raw_data_upload_to_db.py"
