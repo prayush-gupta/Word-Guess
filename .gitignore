@@ -163,5 +163,6 @@ word_guess.db
 
 # Local artifacts
 .DS_Store
+**/.DS_Store
 word_guess.db
 .local/
