@@ -5,8 +5,8 @@ from scripts.raw_data_upload_to_db import data_loader
 
 
 def main() -> None:
-    # game_start()
-    data_loader()
+    game_start()
+    # data_loader()
 
 if __name__ == "__main__":
     main()
